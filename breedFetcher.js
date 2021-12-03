@@ -11,13 +11,14 @@ const fetchBreedDescription = (nameOfbreed, callback) =>{
   request(URL, { json: true }, (err, data) => {
     // console.log(data.body[0]);
     if (err) {
+      console.log("error!");
       return err;
     }
     if (data.body[0] === undefined) {
       // console.log(data.body[0]);
-      console.log("Breed is not found.");
+      description = "Breed is not found.";
     }  else {
-      description =  data.body[0];
+      description =  data.body[0].description;
     }
     callback(err, description);
   });
